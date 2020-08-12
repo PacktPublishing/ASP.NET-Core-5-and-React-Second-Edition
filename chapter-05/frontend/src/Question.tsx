@@ -34,7 +34,7 @@ export const Question = ({
           text-decoration: none;
           color: ${gray2};
         `}
-        to={`questions/${data.questionId}`}
+        to={`/questions/${data.questionId}`}
       >
         {data.title}
       </Link>
