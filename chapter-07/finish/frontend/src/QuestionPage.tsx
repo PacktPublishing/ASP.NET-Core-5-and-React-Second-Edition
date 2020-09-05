@@ -31,8 +31,8 @@ import {
 } from 'react-redux';
 import {
   AppState,
-  GettingQuestionAction,
-  GotQuestionAction,
+  gettingQuestionAction,
+  gotQuestionAction,
 } from './Store';
 
 type FormData = {
@@ -56,18 +56,11 @@ export const QuestionPage = () => {
     const doGetQuestion = async (
       questionId: number,
     ) => {
-      const gettingQuestionAction: GettingQuestionAction = {
-        type: 'GettingQuestion',
-      };
-      dispatch(gettingQuestionAction);
+      dispatch(gettingQuestionAction());
       const foundQuestion = await getQuestion(
         questionId,
       );
-      const gotQuestionAction: GotQuestionAction = {
-        type: 'GotQuestion',
-        question: foundQuestion,
-      };
-      dispatch(gotQuestionAction);
+      dispatch(gotQuestionAction(foundQuestion));
     };
     if (questionId) {
       doGetQuestion(Number(questionId));

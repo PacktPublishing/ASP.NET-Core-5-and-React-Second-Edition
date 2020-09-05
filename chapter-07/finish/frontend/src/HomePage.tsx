@@ -17,8 +17,8 @@ import {
   useDispatch,
 } from 'react-redux';
 import {
-  GettingUnansweredQuestionsAction,
-  GotUnansweredQuestionsAction,
+  gettingUnansweredQuestionsAction,
+  gotUnansweredQuestionsAction,
   AppState,
 } from './Store';
 
@@ -34,16 +34,15 @@ export const HomePage = () => {
 
   React.useEffect(() => {
     const doGetUnansweredQuestions = async () => {
-      const gettingUnansweredQuestionsAction: GettingUnansweredQuestionsAction = {
-        type: 'GettingUnansweredQuestions',
-      };
-      dispatch(gettingUnansweredQuestionsAction);
+      dispatch(
+        gettingUnansweredQuestionsAction(),
+      );
       const unansweredQuestions = await getUnansweredQuestions();
-      const gotUnansweredQuestionsAction: GotUnansweredQuestionsAction = {
-        type: 'GotUnansweredQuestions',
-        questions: unansweredQuestions,
-      };
-      dispatch(gotUnansweredQuestionsAction);
+      dispatch(
+        gotUnansweredQuestionsAction(
+          unansweredQuestions,
+        ),
+      );
     };
     doGetUnansweredQuestions();
     // eslint-disable-next-line react-hooks/exhaustive-deps

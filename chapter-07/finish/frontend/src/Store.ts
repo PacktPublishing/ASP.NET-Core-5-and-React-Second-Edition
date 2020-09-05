@@ -1,6 +1,5 @@
 import { QuestionData } from './QuestionsData';
 import {
-  Action,
   Store,
   createStore,
   combineReducers,
@@ -23,37 +22,66 @@ const initialQuestionState: QuestionsState = {
   searched: [],
 };
 
-export interface GettingUnansweredQuestionsAction
-  extends Action<'GettingUnansweredQuestions'> {}
+export const GETTINGUNANSWEREDQUESTIONS =
+  'GettingUnansweredQuestions';
+export const gettingUnansweredQuestionsAction = () =>
+  ({
+    type: GETTINGUNANSWEREDQUESTIONS,
+  } as const);
 
-export interface GotUnansweredQuestionsAction
-  extends Action<'GotUnansweredQuestions'> {
-  questions: QuestionData[];
-}
+export const GOTUNANSWEREDQUESTIONS =
+  'GotUnansweredQuestions';
+export const gotUnansweredQuestionsAction = (
+  questions: QuestionData[],
+) =>
+  ({
+    type: GOTUNANSWEREDQUESTIONS,
+    questions: questions,
+  } as const);
 
-export interface GettingQuestionAction
-  extends Action<'GettingQuestion'> {}
+export const GETQUESTION = 'GettingQuestion';
+export const gettingQuestionAction = () =>
+  ({
+    type: GETQUESTION,
+  } as const);
 
-export interface GotQuestionAction
-  extends Action<'GotQuestion'> {
-  question: QuestionData | null;
-}
+export const GOTQUESTION = 'GotQuestion';
+export const gotQuestionAction = (
+  question: QuestionData | null,
+) =>
+  ({
+    type: GOTQUESTION,
+    question: question,
+  } as const);
 
-export interface SearchingQuestionsAction
-  extends Action<'SearchingQuestions'> {}
+export const SEARCHQUESTIONS =
+  'SearchingQuestions';
+export const searchingQuestionsAction = () =>
+  ({
+    type: SEARCHQUESTIONS,
+  } as const);
 
-export interface SearchedQuestionsAction
-  extends Action<'SearchedQuestions'> {
-  questions: QuestionData[];
-}
+export const SEARCHEDQUESTIONS =
+  'SearchedQuestions';
+export const searchedQuestionsAction = (
+  questions: QuestionData[],
+) =>
+  ({
+    type: SEARCHEDQUESTIONS,
+    questions,
+  } as const);
 
 type QuestionsActions =
-  | GettingUnansweredQuestionsAction
-  | GotUnansweredQuestionsAction
-  | GettingQuestionAction
-  | GotQuestionAction
-  | SearchingQuestionsAction
-  | SearchedQuestionsAction;
+  | ReturnType<
+      typeof gettingUnansweredQuestionsAction
+    >
+  | ReturnType<
+      typeof gotUnansweredQuestionsAction
+    >
+  | ReturnType<typeof gettingQuestionAction>
+  | ReturnType<typeof gotQuestionAction>
+  | ReturnType<typeof searchingQuestionsAction>
+  | ReturnType<typeof searchedQuestionsAction>;
 
 const questionsReducer = (
   state = initialQuestionState,
@@ -101,14 +129,10 @@ const questionsReducer = (
         loading: false,
       };
     }
-    default:
-      neverReached(action);
   }
 
   return state;
 };
-
-const neverReached = (never: never) => {};
 
 const rootReducer = combineReducers<AppState>({
   questions: questionsReducer,

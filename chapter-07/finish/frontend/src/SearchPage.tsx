@@ -13,8 +13,8 @@ import {
 } from 'react-redux';
 import {
   AppState,
-  SearchingQuestionsAction,
-  SearchedQuestionsAction,
+  searchingQuestionsAction,
+  searchedQuestionsAction,
 } from './Store';
 
 export const SearchPage = () => {
@@ -30,18 +30,13 @@ export const SearchPage = () => {
 
   React.useEffect(() => {
     const doSearch = async (criteria: string) => {
-      const searchingQuestionsAction: SearchingQuestionsAction = {
-        type: 'SearchingQuestions',
-      };
-      dispatch(searchingQuestionsAction);
+      dispatch(searchingQuestionsAction());
       const foundResults = await searchQuestions(
         criteria,
       );
-      const searchedQuestionsAction: SearchedQuestionsAction = {
-        type: 'SearchedQuestions',
-        questions: foundResults,
-      };
-      dispatch(searchedQuestionsAction);
+      dispatch(
+        searchedQuestionsAction(foundResults),
+      );
     };
     doSearch(search);
     // eslint-disable-next-line react-hooks/exhaustive-deps
