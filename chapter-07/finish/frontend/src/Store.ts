@@ -39,10 +39,10 @@ export const gotUnansweredQuestionsAction = (
     questions: questions,
   } as const);
 
-export const GETQUESTION = 'GettingQuestion';
+export const GETTINGQUESTION = 'GettingQuestion';
 export const gettingQuestionAction = () =>
   ({
-    type: GETQUESTION,
+    type: GETTINGQUESTION,
   } as const);
 
 export const GOTQUESTION = 'GotQuestion';
@@ -54,11 +54,11 @@ export const gotQuestionAction = (
     question: question,
   } as const);
 
-export const SEARCHQUESTIONS =
+export const SEARCHINGQUESTIONS =
   'SearchingQuestions';
 export const searchingQuestionsAction = () =>
   ({
-    type: SEARCHQUESTIONS,
+    type: SEARCHINGQUESTIONS,
   } as const);
 
 export const SEARCHEDQUESTIONS =
@@ -88,41 +88,41 @@ const questionsReducer = (
   action: QuestionsActions,
 ) => {
   switch (action.type) {
-    case 'GettingUnansweredQuestions': {
+    case GETTINGUNANSWEREDQUESTIONS: {
       return {
         ...state,
         loading: true,
       };
     }
-    case 'GotUnansweredQuestions': {
+    case GOTUNANSWEREDQUESTIONS: {
       return {
         ...state,
         unanswered: action.questions,
         loading: false,
       };
     }
-    case 'GettingQuestion': {
+    case GETTINGQUESTION: {
       return {
         ...state,
         viewing: null,
         loading: true,
       };
     }
-    case 'GotQuestion': {
+    case GOTQUESTION: {
       return {
         ...state,
         viewing: action.question,
         loading: false,
       };
     }
-    case 'SearchingQuestions': {
+    case SEARCHINGQUESTIONS: {
       return {
         ...state,
         searched: [],
         loading: true,
       };
     }
-    case 'SearchedQuestions': {
+    case SEARCHEDQUESTIONS: {
       return {
         ...state,
         searched: action.questions,
