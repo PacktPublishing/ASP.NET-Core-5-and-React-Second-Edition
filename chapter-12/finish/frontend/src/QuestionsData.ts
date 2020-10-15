@@ -15,8 +15,13 @@ export interface QuestionDataFromServer {
   title: string;
   content: string;
   userName: string;
-  created: Date;
-  answers: AnswerData[];
+  created: string;
+  answers: Array<{
+    answerId: number;
+    content: string;
+    userName: string;
+    created: string;
+  }>
 }
 
 export interface AnswerData {
