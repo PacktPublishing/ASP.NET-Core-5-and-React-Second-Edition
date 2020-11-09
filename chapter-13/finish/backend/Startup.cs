@@ -66,7 +66,7 @@ namespace QandA
                   options.AddPolicy("MustBeQuestionAuthor", policy =>
                     policy.Requirements.Add(new MustBeQuestionAuthorRequirement())));
             services.AddScoped<IAuthorizationHandler,MustBeQuestionAuthorHandler>();
-            services.AddSingleton<IHttpContextAccessor,HttpContextAccessor>();
+            services.AddHttpContextAccessor();
 
             services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
                   builder
