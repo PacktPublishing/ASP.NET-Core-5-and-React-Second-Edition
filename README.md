@@ -1,1 +1,1 @@
-ASP.NET Core 5 and React - Second Edition, published by Packt, published by Packt
+ASP.NET Core 5 and React - Second Edition, published by Packt
