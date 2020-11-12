@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using DbUp;
 using QandA.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -46,6 +47,12 @@ namespace QandA
             }
 
             services.AddControllers();
+            
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "QandA", Version = "v1" });
+            });
+
             services.AddScoped<IDataRepository, DataRepository>();
             services.AddMemoryCache();
             services.AddSingleton<IQuestionCache, QuestionCache>();
@@ -81,6 +88,8 @@ namespace QandA
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "QandA v1"));
             }
             else
             {
