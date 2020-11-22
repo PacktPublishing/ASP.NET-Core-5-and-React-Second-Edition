@@ -1,4 +1,4 @@
-CREATE PROC dbo.Answer_Delete
+﻿CREATE PROC dbo.Answer_Delete
 	(
 	@AnswerId int
 )
@@ -242,5 +242,19 @@ BEGIN
 	UPDATE dbo.Question
 	SET Title = @Title, Content = @Content
 	WHERE QuestionID = @QuestionId
+END
+GO
+
+CREATE PROC dbo.Answer_Get_ByAnswerId
+	(
+	@AnswerId int
+)
+AS
+BEGIN
+	SET NOCOUNT ON
+
+	SELECT AnswerId, Content, Username, Created
+	FROM dbo.Answer 
+	WHERE AnswerId = @AnswerId
 END
 GO
