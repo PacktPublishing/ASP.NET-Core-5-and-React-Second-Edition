@@ -73,7 +73,7 @@ namespace QandA.Controllers
             return question;
         }
 
-        [Authorize(Policy = "MustBeQuestionAuthor")]
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<QuestionGetSingleResponse>> PostQuestion(QuestionPostRequest questionPostRequest)
         {
