@@ -43,9 +43,10 @@ type FormData = {
 };
 
 export const Header = () => {
-  const { register, handleSubmit } = useForm<
-    FormData
-  >();
+  const {
+    register,
+    handleSubmit,
+  } = useForm<FormData>();
   const [searchParams] = useSearchParams();
   const criteria =
     searchParams.get('criteria') || '';

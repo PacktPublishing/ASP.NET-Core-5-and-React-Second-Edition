@@ -24,10 +24,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:production": "cross-env REACT_APP_ENV=production npm run build",
+    "build:staging": "cross-env REACT_APP_ENV=staging npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build:production": "cross-env REACT_APP_ENV=production npm run build",
-    "build:staging": "cross-env REACT_APP_ENV=staging npm run build"
+    "cy:open": "cypress open"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -45,7 +46,9 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/cypress": "^7.0.1",
     "cross-env": "^7.0.2",
+    "cypress": "^5.4.0",
     "eslint-config-prettier": "^6.11.0",
     "prettier": "^2.0.5"
   }
