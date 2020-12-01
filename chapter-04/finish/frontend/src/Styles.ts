@@ -13,8 +13,7 @@ export const primary2 = '#824c67';
 export const accent1 = '#dbb365';
 export const accent2 = '#efd197';
 
-export const fontFamily =
-  "'Segoe UI', 'Helvetica Neue',sans-serif";
+export const fontFamily = "'Segoe UI', 'Helvetica Neue',sans-serif";
 export const fontSize = '16px';
 
 export const PrimaryButton = styled.button`
