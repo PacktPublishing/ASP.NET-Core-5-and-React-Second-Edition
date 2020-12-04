@@ -1,8 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
 import React from 'react';
-
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core';
 import { gray2, gray3 } from './Styles';
 
 import { QuestionData } from './QuestionsData';
@@ -14,10 +12,7 @@ interface Props {
   showContent?: boolean;
 }
 
-export const Question = ({
-  data,
-  showContent = true,
-}: Props) => (
+export const Question = ({ data, showContent = true }: Props) => (
   <div
     css={css`
       padding: 10px 0px;

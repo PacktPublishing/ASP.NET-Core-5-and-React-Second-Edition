@@ -21,7 +21,7 @@ export interface QuestionDataFromServer {
     content: string;
     userName: string;
     created: string;
-  }>
+  }>;
 }
 
 export interface AnswerData {
@@ -44,12 +44,8 @@ export const mapQuestionFromServer = (
     : [],
 });
 
-export const getUnansweredQuestions = async (): Promise<
-  QuestionData[]
-> => {
-  const result = await http<
-    QuestionDataFromServer[]
-  >({
+export const getUnansweredQuestions = async (): Promise<QuestionData[]> => {
+  const result = await http<QuestionDataFromServer[]>({
     path: '/questions/unanswered',
   });
   if (result.ok && result.body) {
@@ -62,9 +58,7 @@ export const getUnansweredQuestions = async (): Promise<
 export const getQuestion = async (
   questionId: number,
 ): Promise<QuestionData | null> => {
-  const result = await http<
-    QuestionDataFromServer
-  >({
+  const result = await http<QuestionDataFromServer>({
     path: `/questions/${questionId}`,
   });
   if (result.ok && result.body) {
@@ -77,9 +71,7 @@ export const getQuestion = async (
 export const searchQuestions = async (
   criteria: string,
 ): Promise<QuestionData[]> => {
-  const result = await http<
-    QuestionDataFromServer[]
-  >({
+  const result = await http<QuestionDataFromServer[]>({
     path: `/questions?search=${criteria}`,
   });
   if (result.ok && result.body) {
@@ -100,10 +92,7 @@ export const postQuestion = async (
   question: PostQuestionData,
 ): Promise<QuestionData | undefined> => {
   const accessToken = await getAccessToken();
-  const result = await http<
-    QuestionDataFromServer,
-    PostQuestionData
-  >({
+  const result = await http<QuestionDataFromServer, PostQuestionData>({
     path: '/questions',
     method: 'post',
     body: question,
@@ -127,10 +116,7 @@ export const postAnswer = async (
   answer: PostAnswerData,
 ): Promise<AnswerData | undefined> => {
   const accessToken = await getAccessToken();
-  const result = await http<
-    AnswerData,
-    PostAnswerData
-  >({
+  const result = await http<AnswerData, PostAnswerData>({
     path: '/questions/answer',
     method: 'post',
     body: answer,

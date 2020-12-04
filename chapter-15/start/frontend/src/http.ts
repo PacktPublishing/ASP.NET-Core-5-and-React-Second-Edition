@@ -11,29 +11,18 @@ export interface HttpResponse<RESB> {
   body?: RESB;
 }
 
-export const http = async <
-  RESB,
-  REQB = undefined
->(
+export const http = async <RESB, REQB = undefined>(
   config: HttpRequest<REQB>,
 ): Promise<HttpResponse<RESB>> => {
-  const request = new Request(
-    `${webAPIUrl}${config.path}`,
-    {
-      method: config.method || 'get',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: config.body
-        ? JSON.stringify(config.body)
-        : undefined,
+  const request = new Request(`${webAPIUrl}${config.path}`, {
+    method: config.method || 'get',
+    headers: {
+      'Content-Type': 'application/json',
     },
-  );
+    body: config.body ? JSON.stringify(config.body) : undefined,
+  });
   if (config.accessToken) {
-    request.headers.set(
-      'authorization',
-      `bearer ${config.accessToken}`,
-    );
+    request.headers.set('authorization', `bearer ${config.accessToken}`);
   }
   const response = await fetch(request);
   if (response.ok) {
@@ -45,24 +34,13 @@ export const http = async <
   }
 };
 
-const logError = async (
-  request: Request,
-  response: Response,
-) => {
-  const contentType = response.headers.get(
-    'content-type',
-  );
+const logError = async (request: Request, response: Response) => {
+  const contentType = response.headers.get('content-type');
   let body: any;
-  if (
-    contentType &&
-    contentType.indexOf('application/json') !== -1
-  ) {
+  if (contentType && contentType.indexOf('application/json') !== -1) {
     body = await response.json();
   } else {
     body = await response.text();
   }
-  console.error(
-    `Error requesting ${request.method} ${request.url}`,
-    body,
-  );
+  console.error(`Error requesting ${request.method} ${request.url}`, body);
 };

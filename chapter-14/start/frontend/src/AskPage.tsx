@@ -20,17 +20,11 @@ type FormData = {
 };
 
 export const AskPage = () => {
-  const [
-    successfullySubmitted,
-    setSuccessfullySubmitted,
-  ] = React.useState(false);
+  const [successfullySubmitted, setSuccessfullySubmitted] = React.useState(
+    false,
+  );
 
-  const {
-    register,
-    errors,
-    handleSubmit,
-    formState,
-  } = useForm<FormData>({
+  const { register, errors, handleSubmit, formState } = useForm<FormData>({
     mode: 'onBlur',
   });
 
@@ -41,24 +35,15 @@ export const AskPage = () => {
       userName: 'Fred',
       created: new Date(),
     });
-    setSuccessfullySubmitted(
-      result ? true : false,
-    );
+    setSuccessfullySubmitted(result ? true : false);
   };
 
   return (
     <Page title="Ask a question">
       <form onSubmit={handleSubmit(submitForm)}>
-        <Fieldset
-          disabled={
-            formState.isSubmitting ||
-            successfullySubmitted
-          }
-        >
+        <Fieldset disabled={formState.isSubmitting || successfullySubmitted}>
           <FieldContainer>
-            <FieldLabel htmlFor="title">
-              Title
-            </FieldLabel>
+            <FieldLabel htmlFor="title">Title</FieldLabel>
             <FieldInput
               id="title"
               name="title"
@@ -68,27 +53,15 @@ export const AskPage = () => {
                 minLength: 10,
               })}
             />
-            {errors.title &&
-              errors.title.type ===
-                'required' && (
-                <FieldError>
-                  Your must enter the question
-                  title
-                </FieldError>
-              )}
-            {errors.title &&
-              errors.title.type ===
-                'minLength' && (
-                <FieldError>
-                  The title must be at least 10
-                  characters
-                </FieldError>
-              )}
+            {errors.title && errors.title.type === 'required' && (
+              <FieldError>Your must enter the question title</FieldError>
+            )}
+            {errors.title && errors.title.type === 'minLength' && (
+              <FieldError>The title must be at least 10 characters</FieldError>
+            )}
           </FieldContainer>
           <FieldContainer>
-            <FieldLabel htmlFor="content">
-              Content
-            </FieldLabel>
+            <FieldLabel htmlFor="content">Content</FieldLabel>
             <FieldTextArea
               id="content"
               name="content"
@@ -97,32 +70,21 @@ export const AskPage = () => {
                 minLength: 50,
               })}
             />
-            {errors.content &&
-              errors.content.type ===
-                'required' && (
-                <FieldError>
-                  Your must enter the question
-                  content
-                </FieldError>
-              )}
-            {errors.content &&
-              errors.content.type ===
-                'minLength' && (
-                <FieldError>
-                  The content must be at least 50
-                  characters
-                </FieldError>
-              )}
+            {errors.content && errors.content.type === 'required' && (
+              <FieldError>Your must enter the question content</FieldError>
+            )}
+            {errors.content && errors.content.type === 'minLength' && (
+              <FieldError>
+                The content must be at least 50 characters
+              </FieldError>
+            )}
           </FieldContainer>
           <FormButtonContainer>
-            <PrimaryButton type="submit">
-              Submit Your Question
-            </PrimaryButton>
+            <PrimaryButton type="submit">Submit Your Question</PrimaryButton>
           </FormButtonContainer>
           {successfullySubmitted && (
             <SubmissionSuccess>
-              Your question was successfully
-              submitted
+              Your question was successfully submitted
             </SubmissionSuccess>
           )}
         </Fieldset>

@@ -1,17 +1,10 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React from 'react';
-
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core';
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
 
 import { Header } from './Header';
 import { HomePage } from './HomePage';
 
-import {
-  fontFamily,
-  fontSize,
-  gray2,
-} from './Styles';
+import { fontFamily, fontSize, gray2 } from './Styles';
 
 function App() {
   return (

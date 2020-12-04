@@ -1,8 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
 import React from 'react';
-
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core';
 
 import user from './user.svg';
 

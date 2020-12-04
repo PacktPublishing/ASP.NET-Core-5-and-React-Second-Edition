@@ -1,31 +1,21 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
+import { gray3, gray6 } from './Styles';
+
 import React from 'react';
 import { Page } from './Page';
 import { useParams } from 'react-router-dom';
-import {
-  QuestionData,
-  getQuestion,
-} from './QuestionsData';
-
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core';
-import { gray3, gray6 } from './Styles';
-
+import { QuestionData, getQuestion } from './QuestionsData';
 import { AnswerList } from './AnswerList';
+
 export const QuestionPage = () => {
-  const [
-    question,
-    setQuestion,
-  ] = React.useState<QuestionData | null>(null);
+  const [question, setQuestion] = React.useState<QuestionData | null>(null);
 
   const { questionId } = useParams();
 
   React.useEffect(() => {
-    const doGetQuestion = async (
-      questionId: number,
-    ) => {
-      const foundQuestion = await getQuestion(
-        questionId,
-      );
+    const doGetQuestion = async (questionId: number) => {
+      const foundQuestion = await getQuestion(questionId);
       setQuestion(foundQuestion);
     };
     if (questionId) {
@@ -41,8 +31,7 @@ export const QuestionPage = () => {
           padding: 15px 20px 20px 20px;
           border-radius: 4px;
           border: 1px solid ${gray6};
-          box-shadow: 0 3px 5px 0
-            rgba(0, 0, 0, 0.16);
+          box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.16);
         `}
       >
         <div
@@ -52,9 +41,7 @@ export const QuestionPage = () => {
             margin: 10px 0px 5px;
           `}
         >
-          {question === null
-            ? ''
-            : question.title}
+          {question === null ? '' : question.title}
         </div>
         {question !== null && (
           <React.Fragment>

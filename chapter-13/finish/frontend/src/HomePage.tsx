@@ -1,13 +1,9 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
 import React from 'react';
 
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core';
-
 import { QuestionList } from './QuestionList';
-import {
-  getUnansweredQuestions,
-  QuestionData,
-} from './QuestionsData';
+import { getUnansweredQuestions, QuestionData } from './QuestionsData';
 import { Page } from './Page';
 import { PageTitle } from './PageTitle';
 
@@ -18,14 +14,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from './Auth';
 
 export const HomePage = () => {
-  const [
-    questions,
-    setQuestions,
-  ] = React.useState<QuestionData[]>([]);
-  const [
-    questionsLoading,
-    setQuestionsLoading,
-  ] = React.useState(true);
+  const [questions, setQuestions] = React.useState<QuestionData[]>([]);
+  const [questionsLoading, setQuestionsLoading] = React.useState(true);
 
   React.useEffect(() => {
     let cancelled = false;
@@ -59,13 +49,9 @@ export const HomePage = () => {
           justify-content: space-between;
         `}
       >
-        <PageTitle>
-          Unanswered Questions
-        </PageTitle>
+        <PageTitle>Unanswered Questions</PageTitle>
         {isAuthenticated && (
-          <PrimaryButton
-            onClick={handleAskQuestionClick}
-          >
+          <PrimaryButton onClick={handleAskQuestionClick}>
             Ask a question
           </PrimaryButton>
         )}

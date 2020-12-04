@@ -1,10 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React from 'react';
-
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core';
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
 import { gray2, gray3 } from './Styles';
 
+import React from 'react';
 import { QuestionData } from './QuestionsData';
 
 import { Link } from 'react-router-dom';
@@ -14,31 +12,22 @@ interface Props {
   showContent?: boolean;
 }
 
-export const Question = ({
-  data,
-  showContent = true,
-}: Props) => (
+export const Question = ({ data, showContent = true }: Props) => (
   <div
     css={css`
       padding: 10px 0px;
     `}
   >
-    <div
+    <Link
       css={css`
-        padding: 10px 0px;
-        font-size: 19px;
+        text-decoration: none;
+        color: ${gray2};
       `}
+      to={`/questions/${data.questionId}`}
     >
-      <Link
-        css={css`
-          text-decoration: none;
-          color: ${gray2};
-        `}
-        to={`/questions/${data.questionId}`}
-      >
-        {data.title}
-      </Link>
-    </div>
+      {data.title}
+    </Link>
+
     {showContent && (
       <div
         css={css`

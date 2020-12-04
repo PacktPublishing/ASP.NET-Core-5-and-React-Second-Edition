@@ -1,22 +1,11 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
 import React from 'react';
 import { UserIcon } from './Icons';
 
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core';
-import {
-  fontFamily,
-  fontSize,
-  gray1,
-  gray2,
-  gray5,
-} from './Styles';
+import { fontFamily, fontSize, gray1, gray2, gray5 } from './Styles';
 
-import {
-  Link,
-  useSearchParams,
-  useNavigate,
-} from 'react-router-dom';
+import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 
 import { useForm } from 'react-hook-form';
 
@@ -43,22 +32,15 @@ type FormData = {
 };
 
 export const Header = () => {
-  const { register, handleSubmit } = useForm<
-    FormData
-  >();
+  const { register, handleSubmit } = useForm<FormData>();
   const [searchParams] = useSearchParams();
-  const criteria =
-    searchParams.get('criteria') || '';
+  const criteria = searchParams.get('criteria') || '';
   const navigate = useNavigate();
   const submitForm = ({ search }: FormData) => {
     navigate(`search?criteria=${search}`);
   };
 
-  const {
-    isAuthenticated,
-    user,
-    loading,
-  } = useAuth();
+  const { isAuthenticated, user, loading } = useAuth();
 
   return (
     <div
@@ -73,8 +55,7 @@ export const Header = () => {
         padding: 10px 20px;
         background-color: #fff;
         border-bottom: 1px solid ${gray5};
-        box-shadow: 0 3px 7px 0
-          rgba(110, 112, 114, 0.21);
+        box-shadow: 0 3px 7px 0 rgba(110, 112, 114, 0.21);
       `}
     >
       <Link
@@ -118,10 +99,7 @@ export const Header = () => {
             <div>
               <span>{user!.name}</span>
 
-              <Link
-                to="signout"
-                css={buttonStyle}
-              >
+              <Link to="signout" css={buttonStyle}>
                 <UserIcon />
                 <span>Sign Out</span>
               </Link>

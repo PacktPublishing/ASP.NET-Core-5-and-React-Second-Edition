@@ -1,8 +1,6 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
 import React from 'react';
-
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core';
 
 import { accent2, gray5 } from './Styles';
 
@@ -11,15 +9,10 @@ import { Question } from './Question';
 
 interface Props {
   data: QuestionData[];
-  renderItem?: (
-    item: QuestionData,
-  ) => JSX.Element;
+  renderItem?: (item: QuestionData) => JSX.Element;
 }
 
-export const QuestionList = ({
-  data,
-  renderItem,
-}: Props) => (
+export const QuestionList = ({ data, renderItem }: Props) => (
   <ul
     css={css`
       list-style: none;
@@ -42,11 +35,7 @@ export const QuestionList = ({
           }
         `}
       >
-        {renderItem ? (
-          renderItem(question)
-        ) : (
-          <Question data={question} />
-        )}
+        {renderItem ? renderItem(question) : <Question data={question} />}
       </li>
     ))}
   </ul>

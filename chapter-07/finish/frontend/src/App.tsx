@@ -1,37 +1,25 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React from 'react';
-
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core';
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
 
 import { Header } from './Header';
 import { HomePage } from './HomePage';
 
-import {
-  fontFamily,
-  fontSize,
-  gray2,
-} from './Styles';
+import { fontFamily, fontSize, gray2 } from './Styles';
 
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import { SearchPage } from './SearchPage';
 import { SignInPage } from './SignInPage';
 import { NotFoundPage } from './NotFoundPage';
 import { QuestionPage } from './QuestionPage';
 
+import React from 'react';
 import { Provider } from 'react-redux';
 import { configureStore } from './Store';
 
-const AskPage = React.lazy(() =>
-  import('./AskPage'),
-);
+const AskPage = React.lazy(() => import('./AskPage'));
 
 const store = configureStore();
-
 function App() {
   return (
     <Provider store={store}>
@@ -45,14 +33,8 @@ function App() {
         >
           <Header />
           <Routes>
-            <Route
-              path=""
-              element={<HomePage />}
-            />
-            <Route
-              path="search"
-              element={<SearchPage />}
-            />
+            <Route path="" element={<HomePage />} />
+            <Route path="search" element={<SearchPage />} />
             <Route
               path="ask"
               element={
@@ -72,18 +54,9 @@ function App() {
                 </React.Suspense>
               }
             />
-            <Route
-              path="signin"
-              element={<SignInPage />}
-            />
-            <Route
-              path="*"
-              element={<NotFoundPage />}
-            />
-            <Route
-              path="questions/:questionId"
-              element={<QuestionPage />}
-            />
+            <Route path="signin" element={<SignInPage />} />
+            <Route path="questions/:questionId" element={<QuestionPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
       </BrowserRouter>

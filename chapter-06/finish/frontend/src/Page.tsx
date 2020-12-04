@@ -1,18 +1,13 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
 import React from 'react';
-
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core';
-
 import { PageTitle } from './PageTitle';
 
 interface Props {
   title?: string;
   children: React.ReactNode;
 }
-export const Page = ({
-  title,
-  children,
-}: Props) => (
+export const Page = ({ title, children }: Props) => (
   <div
     css={css`
       margin: 50px auto 20px auto;

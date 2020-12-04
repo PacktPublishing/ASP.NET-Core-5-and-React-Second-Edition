@@ -1,14 +1,9 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
 import React from 'react';
 import { Page } from './Page';
 import { useParams } from 'react-router-dom';
-import {
-  QuestionData,
-  getQuestion,
-  postAnswer,
-} from './QuestionsData';
-
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core';
+import { QuestionData, getQuestion, postAnswer } from './QuestionsData';
 import {
   gray3,
   gray6,
@@ -31,25 +26,17 @@ type FormData = {
 };
 
 export const QuestionPage = () => {
-  const [
-    successfullySubmitted,
-    setSuccessfullySubmitted,
-  ] = React.useState(false);
+  const [successfullySubmitted, setSuccessfullySubmitted] = React.useState(
+    false,
+  );
 
-  const [
-    question,
-    setQuestion,
-  ] = React.useState<QuestionData | null>(null);
+  const [question, setQuestion] = React.useState<QuestionData | null>(null);
 
   const { questionId } = useParams();
 
   React.useEffect(() => {
-    const doGetQuestion = async (
-      questionId: number,
-    ) => {
-      const foundQuestion = await getQuestion(
-        questionId,
-      );
+    const doGetQuestion = async (questionId: number) => {
+      const foundQuestion = await getQuestion(questionId);
       setQuestion(foundQuestion);
     };
     if (questionId) {
@@ -57,12 +44,7 @@ export const QuestionPage = () => {
     }
   }, [questionId]);
 
-  const {
-    register,
-    errors,
-    handleSubmit,
-    formState,
-  } = useForm<FormData>({
+  const { register, errors, handleSubmit, formState } = useForm<FormData>({
     mode: 'onBlur',
   });
 
@@ -73,9 +55,7 @@ export const QuestionPage = () => {
       userName: 'Fred',
       created: new Date(),
     });
-    setSuccessfullySubmitted(
-      result ? true : false,
-    );
+    setSuccessfullySubmitted(result ? true : false);
   };
 
   return (
@@ -86,8 +66,7 @@ export const QuestionPage = () => {
           padding: 15px 20px 20px 20px;
           border-radius: 4px;
           border: 1px solid ${gray6};
-          box-shadow: 0 3px 5px 0
-            rgba(0, 0, 0, 0.16);
+          box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.16);
         `}
       >
         <div
@@ -97,9 +76,7 @@ export const QuestionPage = () => {
             margin: 10px 0px 5px;
           `}
         >
-          {question === null
-            ? ''
-            : question.title}
+          {question === null ? '' : question.title}
         </div>
         {question !== null && (
           <React.Fragment>
@@ -130,15 +107,10 @@ export const QuestionPage = () => {
               `}
             >
               <Fieldset
-                disabled={
-                  formState.isSubmitting ||
-                  successfullySubmitted
-                }
+                disabled={formState.isSubmitting || successfullySubmitted}
               >
                 <FieldContainer>
-                  <FieldLabel htmlFor="content">
-                    Your Answer
-                  </FieldLabel>
+                  <FieldLabel htmlFor="content">Your Answer</FieldLabel>
                   <FieldTextArea
                     id="content"
                     name="content"
@@ -147,21 +119,14 @@ export const QuestionPage = () => {
                       minLength: 50,
                     })}
                   />
-                  {errors.content &&
-                    errors.content.type ===
-                      'required' && (
-                      <FieldError>
-                        Your must enter the answer
-                      </FieldError>
-                    )}
-                  {errors.content &&
-                    errors.content.type ===
-                      'minLength' && (
-                      <FieldError>
-                        The answer must be at
-                        least 50 characters
-                      </FieldError>
-                    )}
+                  {errors.content && errors.content.type === 'required' && (
+                    <FieldError>Your must enter the answer</FieldError>
+                  )}
+                  {errors.content && errors.content.type === 'minLength' && (
+                    <FieldError>
+                      The answer must be at least 50 characters
+                    </FieldError>
+                  )}
                 </FieldContainer>
                 <FormButtonContainer>
                   <PrimaryButton type="submit">
@@ -170,8 +135,7 @@ export const QuestionPage = () => {
                 </FormButtonContainer>
                 {successfullySubmitted && (
                   <SubmissionSuccess>
-                    Your answer was successfully
-                    submitted
+                    Your answer was successfully submitted
                   </SubmissionSuccess>
                 )}
               </Fieldset>

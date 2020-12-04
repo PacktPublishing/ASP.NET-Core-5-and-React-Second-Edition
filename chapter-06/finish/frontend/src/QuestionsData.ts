@@ -24,8 +24,7 @@ const questions: QuestionData[] = [
     answers: [
       {
         answerId: 1,
-        content:
-          'To catch problems earlier speeding up your developments',
+        content: 'To catch problems earlier speeding up your developments',
         userName: 'Jane',
         created: new Date(),
       },
@@ -40,8 +39,7 @@ const questions: QuestionData[] = [
   },
   {
     questionId: 2,
-    title:
-      'Which state management tool should I use?',
+    title: 'Which state management tool should I use?',
     content:
       'There seem to be a fair few state management tools around for React - React, Unstated, ... Which one should I use?',
     userName: 'Bob',
@@ -50,30 +48,20 @@ const questions: QuestionData[] = [
   },
 ];
 
-export const getUnansweredQuestions = async (): Promise<
-  QuestionData[]
-> => {
+export const getUnansweredQuestions = async (): Promise<QuestionData[]> => {
   await wait(500);
-  return questions.filter(
-    (q) => q.answers.length === 0,
-  );
+  return questions.filter((q) => q.answers.length === 0);
 };
 
-const wait = async (
-  ms: number,
-): Promise<void> => {
-  return new Promise((resolve) =>
-    setTimeout(resolve, ms),
-  );
+const wait = async (ms: number): Promise<void> => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
 export const getQuestion = async (
   questionId: number,
 ): Promise<QuestionData | null> => {
   await wait(500);
-  const results = questions.filter(
-    (q) => q.questionId === questionId,
-  );
+  const results = questions.filter((q) => q.questionId === questionId);
   return results.length === 0 ? null : results[0];
 };
 
@@ -83,12 +71,8 @@ export const searchQuestions = async (
   await wait(500);
   return questions.filter(
     (q) =>
-      q.title
-        .toLowerCase()
-        .indexOf(criteria.toLowerCase()) >= 0 ||
-      q.content
-        .toLowerCase()
-        .indexOf(criteria.toLowerCase()) >= 0,
+      q.title.toLowerCase().indexOf(criteria.toLowerCase()) >= 0 ||
+      q.content.toLowerCase().indexOf(criteria.toLowerCase()) >= 0,
   );
 };
 
@@ -103,10 +87,7 @@ export const postQuestion = async (
   question: PostQuestionData,
 ): Promise<QuestionData | undefined> => {
   await wait(500);
-  const questionId =
-    Math.max(
-      ...questions.map((q) => q.questionId),
-    ) + 1;
+  const questionId = Math.max(...questions.map((q) => q.questionId)) + 1;
   const newQuestion: QuestionData = {
     ...question,
     questionId,

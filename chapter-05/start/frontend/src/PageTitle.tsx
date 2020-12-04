@@ -1,14 +1,12 @@
-import React from 'react';
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
 
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core';
+import React from 'react';
 
 interface Props {
   children: React.ReactNode;
 }
-export const PageTitle = ({
-  children,
-}: Props) => (
+export const PageTitle = ({ children }: Props) => (
   <h2
     css={css`
       font-size: 15px;

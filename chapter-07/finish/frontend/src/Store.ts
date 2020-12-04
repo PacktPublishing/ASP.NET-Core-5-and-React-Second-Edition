@@ -1,9 +1,5 @@
 import { QuestionData } from './QuestionsData';
-import {
-  Store,
-  createStore,
-  combineReducers,
-} from 'redux';
+import { Store, createStore, combineReducers } from 'redux';
 
 interface QuestionsState {
   readonly loading: boolean;
@@ -22,18 +18,15 @@ const initialQuestionState: QuestionsState = {
   searched: [],
 };
 
-export const GETTINGUNANSWEREDQUESTIONS =
-  'GettingUnansweredQuestions';
+export const GETTINGUNANSWEREDQUESTIONS = 'GettingUnansweredQuestions';
+
 export const gettingUnansweredQuestionsAction = () =>
   ({
     type: GETTINGUNANSWEREDQUESTIONS,
   } as const);
 
-export const GOTUNANSWEREDQUESTIONS =
-  'GotUnansweredQuestions';
-export const gotUnansweredQuestionsAction = (
-  questions: QuestionData[],
-) =>
+export const GOTUNANSWEREDQUESTIONS = 'GotUnansweredQuestions';
+export const gotUnansweredQuestionsAction = (questions: QuestionData[]) =>
   ({
     type: GOTUNANSWEREDQUESTIONS,
     questions: questions,
@@ -46,38 +39,28 @@ export const gettingQuestionAction = () =>
   } as const);
 
 export const GOTQUESTION = 'GotQuestion';
-export const gotQuestionAction = (
-  question: QuestionData | null,
-) =>
+export const gotQuestionAction = (question: QuestionData | null) =>
   ({
     type: GOTQUESTION,
     question: question,
   } as const);
 
-export const SEARCHINGQUESTIONS =
-  'SearchingQuestions';
+export const SEARCHINGQUESTIONS = 'SearchingQuestions';
 export const searchingQuestionsAction = () =>
   ({
     type: SEARCHINGQUESTIONS,
   } as const);
 
-export const SEARCHEDQUESTIONS =
-  'SearchedQuestions';
-export const searchedQuestionsAction = (
-  questions: QuestionData[],
-) =>
+export const SEARCHEDQUESTIONS = 'SearchedQuestions';
+export const searchedQuestionsAction = (questions: QuestionData[]) =>
   ({
     type: SEARCHEDQUESTIONS,
     questions,
   } as const);
 
 type QuestionsActions =
-  | ReturnType<
-      typeof gettingUnansweredQuestionsAction
-    >
-  | ReturnType<
-      typeof gotUnansweredQuestionsAction
-    >
+  | ReturnType<typeof gettingUnansweredQuestionsAction>
+  | ReturnType<typeof gotUnansweredQuestionsAction>
   | ReturnType<typeof gettingQuestionAction>
   | ReturnType<typeof gotQuestionAction>
   | ReturnType<typeof searchingQuestionsAction>
@@ -138,12 +121,7 @@ const rootReducer = combineReducers<AppState>({
   questions: questionsReducer,
 });
 
-export function configureStore(): Store<
-  AppState
-> {
-  const store = createStore(
-    rootReducer,
-    undefined,
-  );
+export function configureStore(): Store<AppState> {
+  const store = createStore(rootReducer, undefined);
   return store;
 }
