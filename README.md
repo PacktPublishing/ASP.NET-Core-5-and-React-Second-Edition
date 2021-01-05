@@ -2,7 +2,7 @@
 
 <a href="https://www.packtpub.com/in/web-development/asp-net-core-5-and-react-second-edition"><img src="https://www.packtpub.com/media/catalog/product/cache/4cdce5a811acc0d2926d7f857dceb83b/9/7/9781800206168-original_137.jpeg" alt="ASP.NET Core 5 and React - Second Edition" height="256px" align="right"></a>
 
-This is the code repository for [ASP.NET Core 5 and React - Second Edition](Packt UTM URL of the Book), published by Packt.
+This is the code repository for [ASP.NET Core 5 and React - Second Edition](https://www.packtpub.com/in/web-development/asp-net-core-5-and-react-second-edition), published by Packt.
 
 **Modern full-stack web development using .NET 5, React 17, and TypeScript 4**
 
