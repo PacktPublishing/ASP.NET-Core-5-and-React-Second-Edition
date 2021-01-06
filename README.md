@@ -4,7 +4,7 @@
 
 This is the code repository for [ASP.NET Core 5 and React - Second Edition](https://www.packtpub.com/in/web-development/asp-net-core-5-and-react-second-edition), published by Packt.
 
-**Modern full-stack web development using .NET 5, React 17, and TypeScript 4**
+**Full-stack web development using .NET 5, React 17, and TypeScript 4**
 
 ## What is this book about?
 The book starts by taking you through React and TypeScript components for building an intuitive single-page application and then shows you how to design scalable REST APIs that can integrate with a React-based frontend. Next, you’ll get to grips with the latest features, popular patterns, and tools available in the React ecosystem, including function-based components, React Router, and Redux. As you progress through the chapters, you'll learn how to use React with TypeScript to make the frontend robust and maintainable and cover key ASP.NET 5 features such as API controllers, attribute routing, and model binding to build a sturdy backend. In addition to this, you’ll explore API security with ASP.NET 5 identity and authorization policies and write reliable unit tests using both .NET and React, before deploying your app on Azure.
