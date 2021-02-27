@@ -58,6 +58,10 @@ Click on the following link to see the Code in Action:
 
 [YouTube](http://bit.ly/3mB8KuU)
 
+### Errata
+* **Page 67**: Please ignore/remove points 6 & 7. As these steps are replicated from steps 2 and 3. At this point they have been completed already.
+* **Page 70**: When creating the .prettierrc file in step 4, there is a missing comma at the end of the line that reads, ```"trailingComma": "all"**```. So, this line should be replaced with  ```"trailingComma": "all",```
+
 ### Related products <Other books you may enjoy>
 * An Atypical ASP.NET Core 5 Design Patterns Guide [[Packt]](https://www.packtpub.com/web-development/asp-net-core-5-design-patterns) [[Amazon]](https://www.amazon.com/dp/1789346096)
 
