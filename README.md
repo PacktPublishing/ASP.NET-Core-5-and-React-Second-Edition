@@ -62,7 +62,7 @@ Click on the following link to see the Code in Action:
 [YouTube](http://bit.ly/3mB8KuU)
 
 ### Errata
-* **Page 67**: Please ignore/remove points 6 & 7. As these steps are replicated from steps 2 and 3. At this point they have been completed already.
+* **Page 67**: Please ignore/remove points 7 & 8. As these steps are replicated from steps 2 and 3. At this point they have been completed already.
 * **Page 70**: When creating the .prettierrc file in step 4, there is a missing comma at the end of the line that reads, ```"trailingComma": "all"**```. So, this line should be replaced with  ```"trailingComma": "all",```
 *  **Page 114**: If using React 17+, it may appear that a “double render” doesn’t occur because “rendered” is output to the console once. A “double render” does occur but React suppresses `console.log` statements in the second render. See the note at the bottom of this React doc for more information: https://reactjs.org/docs/strict-mode.html
 
